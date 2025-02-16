@@ -4,10 +4,13 @@ const cors = require("cors");
 const { initializeDatabase } = require("./db/db.connect");
 const Movie = require("./models/movie.models");
 
-app.use(cors());
 app.use(express.json());
 initializeDatabase();
-
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+};
+app.use(cors(corsOptions));
 // const newMovie = {
 //   title: "New Movie",
 //   releaseYear: 2023,
